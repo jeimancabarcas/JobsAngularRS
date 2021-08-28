@@ -1,3 +1,15 @@
+<app-map-render [markers]="jobsInfo?.data"></app-map-render>
+
+<nav>
+  <ul class="pagination justify-content-end">
+    <li class="page-item"
+     *ngFor="let item of jobsInfo?.links;" style="cursor:pointer"
+     [ngClass]="{'disabled': item.active === true || !item.url}">
+      <a class="page-link"
+          (click)="getJobsInfo(item.url)">{{item.label}}</a>
+    </li>
+  </ul>
+</nav>
 <table class="table">
     <thead>
       <tr>
@@ -18,8 +30,9 @@
   </table>
   <nav>
     <ul class="pagination justify-content-end">
-      <li class="page-item" [ngClass]="{'disabled': item.active === true || !item.url}"
-       *ngFor="let item of jobsInfo?.links;" style="cursor:pointer">
+      <li class="page-item"
+       *ngFor="let item of jobsInfo?.links;" style="cursor:pointer"
+       [ngClass]="{'disabled': item.active === true || !item.url}">
         <a class="page-link"
             (click)="getJobsInfo(item.url)">{{item.label}}</a>
       </li>

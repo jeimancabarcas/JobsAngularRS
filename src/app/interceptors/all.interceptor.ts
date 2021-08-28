@@ -26,6 +26,7 @@ export class AllInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         if(err.status != 0) {
+          // Esta validación se podria hacer con un Guard pero se aprovecha el interceptor
           if (err.status === 401 || err.error.message === 'token.not-found') {
             alert("Error : Session expired")
             window.stop();

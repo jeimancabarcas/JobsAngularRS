@@ -40,12 +40,12 @@ interface Link {
   active: boolean;
 }
 
-interface DataJob {
+export interface DataJob {
   id: number;
   title: string;
   description: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   image: string;
   date: string;
   status: string;

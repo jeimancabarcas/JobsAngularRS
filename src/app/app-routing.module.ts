@@ -4,7 +4,6 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BaseComponent } from './components/base/base.component';
 import { HomeComponent } from './components/home/home.component';
-import { MapRenderComponent } from './components/map-render/map-render.component';
 
 const routes: Routes = [
   { 
@@ -14,8 +13,7 @@ const routes: Routes = [
     path: 'user', component: BaseComponent,
     children: [
       { path: 'home', component:  HomeComponent },
-      { path: 'map', component:  MapRenderComponent },
-      { path: '', redirectTo: 'map', pathMatch: 'full'},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
     ]
   },
   { 

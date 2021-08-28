@@ -10,22 +10,14 @@ import { JobService, ResponseJobs } from 'src/app/services/job.service';
 export class HomeComponent implements OnInit {
   jobsInfo: ResponseJobs | undefined;
 
-  constructor(private auth: AuthService, private jobs: JobService) { 
-    this.getUserInfo();
+  constructor(private jobs: JobService) { 
     this.getJobsInfo(undefined);
   }
 
   ngOnInit(): void {
   }
 
-  async getUserInfo() {
-    const userInfo = await this.auth.getUserInfo();
-    console.log(userInfo)
-  }
-
   getJobsInfo(urlPage: string | undefined) {
     this.jobs.getJobs(urlPage).subscribe(value => this.jobsInfo = value)
   }
-  
-
 }
