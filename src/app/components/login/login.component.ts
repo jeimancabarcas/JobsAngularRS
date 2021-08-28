@@ -11,7 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   user: User = new User('tvandervort@example.net', 'password');
 
-  constructor(private auth: AuthService, private route: Router) { }
+  constructor(private auth: AuthService, private route: Router) {
+    if(this.auth.getTokenInfo()) {
+      this.route.navigate(['/user']);
+    }
+  }
 
   ngOnInit(): void {
   }

@@ -7,18 +7,10 @@ import { DataJob } from 'src/app/services/job.service';
   styleUrls: ['./map-render.component.scss']
 })
 export class MapRenderComponent implements OnInit {
-  @Input() markers: DataJob[] | undefined = [];
-
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input() markers: DataJob[] = [];
+  constructor() { 
   }
 
-  numberToString(value: number) {
-    return '' + value;
+  ngOnInit(): void {
   }
 }

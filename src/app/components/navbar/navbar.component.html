@@ -4,11 +4,15 @@
         <img src="../../../assets/logo.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
         Home
       </a>
-      <div class="float-right">
+      <div>
         <b>Name: </b> {{userInfo?.name}} 
       </div>
-      <div class="float-right">
+      <div>
         <b>Email: </b> {{userInfo?.email}}
+      </div>
+      <div>
+        
+        <button type="button" class="btn btn-link" (click)="logOut()">Log Out</button>
       </div>
     </div>
   </nav>

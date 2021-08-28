@@ -17,6 +17,7 @@ export class AllInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService, private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    
     const headers = request.headers.set("Authorization",
     this.auth.getTokenInfo()?.token_type+" " + this.auth.getTokenInfo()?.access_token);
     const newRequest = request.clone({
@@ -26,8 +27,8 @@ export class AllInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         if(err.status != 0) {
-          // Esta validación se podria hacer con un Guard pero se aprovecha el interceptor
           if (err.status === 401 || err.error.message === 'token.not-found') {
+            this.auth.clearSession();
             alert("Error : Session expired")
             window.stop();
             this.router.navigateByUrl('/login');

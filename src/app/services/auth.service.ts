@@ -7,9 +7,9 @@ import { UserInfo } from '../models/user-info.model';
 @Injectable()
 export class AuthService {
   private baseUrl = 'https://coding-test.rootstack.net/';
-  private token: TokenInfo | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+  }
 
   getToken(user: User) {
     return this.http.post<TokenInfo>(this.baseUrl + "api/auth/login", user).toPromise();
@@ -20,10 +20,15 @@ export class AuthService {
   }
 
   setTokenInfo(token: TokenInfo) {
-    this.token = token
+    window.localStorage.setItem("session", JSON.stringify(token));
   }
 
-  getTokenInfo() {
-    return this.token;
+  getTokenInfo(): TokenInfo {
+    const session = window.localStorage.getItem("session");
+    return session ? JSON.parse(session):undefined;
+  }
+
+  clearSession() {
+    window.localStorage.clear();
   }
 }
