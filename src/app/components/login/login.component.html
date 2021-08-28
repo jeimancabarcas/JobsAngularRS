@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form #logInForm="ngForm" (ngSubmit)="submit()">
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailAddress"
+                    required
+                    [(ngModel)]="user.email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                    required
+                    [(ngModel)]="user.password">
+            </div>
+            <button type="submit" class="btn btn-primary"
+                [disabled]="!logInForm.form.valid">Log In</button>
+        </form>
+    </div>
+</div>
