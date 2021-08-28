@@ -17,15 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   async submit() {
-    
-    try {
       const response = await this.auth.getToken(this.user);
       this.auth.setTokenInfo(response);
       this.route.navigate(['/user']);
-    } catch (error) {
-      if (error.status === 500) {
-        alert("An error has occured!")
-      }
-    }
   }
 }

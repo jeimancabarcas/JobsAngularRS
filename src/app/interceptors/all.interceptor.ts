@@ -25,9 +25,14 @@ export class AllInterceptor implements HttpInterceptor {
     return next.handle(newRequest).pipe(
       catchError((err: HttpErrorResponse) => {
         console.log(err);
-        if (err.status === 401) {
-          alert("Error : " + err.statusText)
-          this.router.navigateByUrl('/login');
+        if(err.status != 0) {
+          if (err.status === 401 || err.error.message === 'token.not-found') {
+            alert("Error : Session expired")
+            window.stop();
+            this.router.navigateByUrl('/login');
+          }else {
+            alert("An error has occured!")
+          }
         }
 
         return throwError( err );

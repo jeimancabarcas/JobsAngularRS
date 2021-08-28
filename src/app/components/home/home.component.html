@@ -1,1 +1,27 @@
-home works!
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Status</th>
+        <th scope="col">Assigned to</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of jobsInfo?.data;">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.assigned_to}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <nav>
+    <ul class="pagination justify-content-end">
+      <li class="page-item" [ngClass]="{'disabled': item.active === true || !item.url}"
+       *ngFor="let item of jobsInfo?.links;" style="cursor:pointer">
+        <a class="page-link"
+            (click)="getJobsInfo(item.url)">{{item.label}}</a>
+      </li>
+    </ul>
+  </nav>

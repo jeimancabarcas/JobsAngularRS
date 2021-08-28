@@ -12,6 +12,8 @@ import { AuthService } from './services/auth.service';
 import { BaseComponent } from './components/base/base.component';
 import { HomeComponent } from './components/home/home.component';
 import { MapRenderComponent } from './components/map-render/map-render.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { MapRenderComponent } from './components/map-render/map-render.component
     BaseComponent,
     HomeComponent,
     PageNotFoundComponent,
-    MapRenderComponent
+    MapRenderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { MapRenderComponent } from './components/map-render/map-render.component
   ],
   providers: [
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AllInterceptor, multi: true, deps: [AuthService] },
+    { provide: HTTP_INTERCEPTORS, useClass: AllInterceptor, multi: true, deps: [AuthService, Router] },
   ],
   bootstrap: [AppComponent]
 })
