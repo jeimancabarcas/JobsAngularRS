@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User = new User('tvandervort@example.net', 'password');
+  user: User = new User('', '');
 
   constructor(private auth: AuthService, private route: Router) {
     if(this.auth.getTokenInfo()) {
